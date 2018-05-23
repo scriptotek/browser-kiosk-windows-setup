@@ -31,7 +31,8 @@ Set `AutoAdminLogon` (STRING) to 1.
 4.	When asked `When do you want the task to start?`, select Daily. Click Next.
 5.	Select some time in the night, like `05:00:00`
 6.	Clicking Next will bring you to the Action page. Type `shutdown` on the Program/script space and `/r /f /t 0` in the Add arguments box (/r for `reboot`, /f for `force`, /t 0 for `now`). Alternatively, change /r to /s if you want to `shut down completely` and have BIOS boot up again.
-7.	Click Next to review all and finally click Finish.
+7.  If you get the `Restore Sessions`-message when Chrome starts after reboot, you may need to add `taskkill` on a line before before the `shutdown` action and in the `Add arguments`-box fill in `/im CHROME.exe`, to make sure that Chrome is gently closed. 
+8.	Click Next to review all and finally click Finish.
 
 ## Prevent screen from going black and entering screen saver mode
 Prevent screen from going black:
