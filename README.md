@@ -59,5 +59,5 @@ TASKKILL /F /IM CHROME.exe
 
 rem wait for internet
 timeout /t 60
-start chrome --kiosk --noerrdialogs --disable-session-chrashed-bubble --disable-infobars --disable-translate http://www.yourapp.com
+start chrome --kiosk --noerrdialogs --disable-session-chrashed-bubble --disable-infobars --disable-translate http://www.link-to-your-app.com
 
