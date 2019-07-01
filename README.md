@@ -68,7 +68,7 @@ Right clicking can also be disabled in the web page by javascript:
 
 ## Prepare Chrome startup script
 
-See [start-chrome-kiosk.ps1](https://github.com/scriptotek/browser-kiosk-windows-setup/blob/masterstart-chrome-kiosk.ps1) for an example startup script for Chrome.
+See [start-chrome-kiosk.ps1](https://github.com/scriptotek/browser-kiosk-windows-setup/blob/master/start-chrome-kiosk.ps1) for an example startup script for Chrome.
 
 The most important flag is the `--kiosk` flag, but there's also some more that are useful. Unfortunately, the flags tend to change from version to version without much notice, so alway scheck with the updated list of working flags here: https://peter.sh/experiments/chromium-command-line-switches/
 
