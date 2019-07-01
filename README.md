@@ -1,13 +1,13 @@
 # Tools and tips for Win 10 Kiosk mode with browser
 Various tools and tips to set up a Windows 10 pc with Chrome and Firefox in Kiosk mode.
 This document contains:
-1. Recipe on how to autologon
+1. Automatic login
 2. Scheduled task restarting computer at a certain hour every night
 3. Prevent screen from going black and entering screen saver mode
 4. Disable Edge Swipe and Pinch Zoom in Windows 10
 5. Flags for Chrome and Firefox with batch-file example to start in Kiosk mode
 
-## Recipe on how to autologon
+## Automatic login
 Create local user and make appropriate changes in Regedit for autologin.
 
 You will need to have one administrator user and one non-adminisitrator user for daily operation.
@@ -15,14 +15,14 @@ Here comes an instruction on how to make changes in Regedit to implement autolog
 
 1. Press the Windows key and type "regedit" (make sure you are doings this as an administrator and that you already have created a non-administrator user for the purpose of autologin, know the password of this user, and also know the computer name):
 You will have to either change or create new entries depending on whether they already exist on the kiosk computer.
-2. Go to `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System`.
-Change `LocalAccountTokenFilterPolicy` (32-bit DWORD) to 1 (hex or dec is the same).
-3. Go to `HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\Winlogon`
-Set `AutoAdminLogon` (STRING) to 1.
-4. Set `DefaultDomainName` (STRING) to computer name.
-5. Set `AutoLogonCount` (32-bit DWORD) to a really high number, ie. 100000 (unfortunately, 0 is not infinity or disable in this case).
-6. Set `DefaultUserName` (STRING) to the name of your non-administrator user.
-7. Set `DefaultPassword` (STRING) to the password of your non-administrator user. 
+2. Under `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System`:
+    1. Change `LocalAccountTokenFilterPolicy` (32-bit DWORD) to 1 (hex or dec is the same).
+3. Under `HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\Winlogon`:
+    1. Set `AutoAdminLogon` (STRING) to 1.
+    2. Set `DefaultDomainName` (STRING) to computer name.
+    3. Set `DefaultUserName` (STRING) to the name of your non-administrator user.
+    4. Set `DefaultPassword` (STRING) to the password of your non-administrator user. 
+    5. Delete `AutoLogonCount` if it exists.
 
 ## Scheduled task restarting computer at a certain hour every night
 1.	Click on the Windows-icon and type `Task Scheduler`.
@@ -52,13 +52,24 @@ For `Windows 10 Pro`, go here to find a useful instruction: https://www.tenforum
 Right clicking can also be disabled in the web page by javascript:
 `document.addEventListener('contextmenu', function(e) { e.preventDefault(); }, true);` 
 
-## Flags for Chrome and Firefox with batch-file example to start in Kiosk mode
+## Flags for Chrome
 
-rem close chrome if already running
-timeout /t 10
-TASKKILL /F /IM CHROME.exe
+See [start-chrome-kiosk.ps1](https://github.com/scriptotek/browser-kiosk-windows-setup/blob/master/start-kiosk.ps1) for an example startup script for Chrome.
 
-rem wait for internet
-timeout /t 60
-start chrome --kiosk --noerrdialogs --disable-session-chrashed-bubble --disable-infobars --disable-translate http://www.link-to-your-app.com
+The most important flag is the `--kiosk` flag, but there's also some more that are useful. Unfortunately, the flags tend to change from version to version without much notice, so alway scheck with the updated list of working flags here: https://peter.sh/experiments/chromium-command-line-switches/
+
+Useful flags:
+
+- `--kiosk` : Enable kiosk mode (fullscreen with no menus)
+- `--noerrdialogs`: Prevent error dialogs.
+- `--disable-infobars`: Prevent the yellow information bars.
+
+There used to be a flag called `--disable-session-crashed-bubble` for [disabling the restore dialog](https://superuser.com/questions/461035/disable-google-chrome-session-restore-functionality) that is shown if Chrome did not exit cleanly. After the flag was removed, the only way to avoid the restore dialog seems to be to manually alter the Preferences file (or lock it).
+In the [start-chrome-kiosk.ps1](https://github.com/scriptotek/browser-kiosk-windows-setup/blob/master/start-kiosk.ps1) script, we are manually altering the file.
+
+
+
+## Flags for Firefox
+
+Todo
 
