@@ -16,9 +16,9 @@ $kioskUrl = "http://ub-www01.uio.no/propaganda/kommende-disputaser/mn.html"
 
 # 1. Ensure clean slate where nothing is running already
 Get-Process -Name POWERPNT -ErrorAction SilentlyContinue | Stop-Process
+Wait-Process -Name POWERPNT -ErrorAction SilentlyContinue
 Get-Process -Name chrome -ErrorAction SilentlyContinue | Stop-Process
 Wait-Process -Name chrome -ErrorAction SilentlyContinue
-Wait-Process -Name PWOERPNT -ErrorAction SilentlyContinue
 
 # 2. Start Powerpoint in background to prevent lock screen
 $powerpoint = New-Object -ComObject powerpoint.application
