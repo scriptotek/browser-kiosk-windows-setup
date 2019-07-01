@@ -87,3 +87,6 @@ In the [start-chrome-kiosk.ps1](https://github.com/scriptotek/browser-kiosk-wind
 
 Todo
 
+## Hiding the mouse cursor
+
+CSS can in principle be used to hide the cursor, but a small cursor move is required for this to take effect. Another strategy involves replacing the cursor graphic with a small white pixel, but this is quite a hack. The strategy we've found to work the best is to use a small app called [AutoHideMouseCursor](https://www.softwareok.com/?seite=Microsoft/AutoHideMouseCursor). It can be configured to start in the tray and automatically hide the cursor after a given time, say 5 seconds. And it always just works.
