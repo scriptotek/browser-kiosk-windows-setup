@@ -68,7 +68,7 @@ Right clicking can also be disabled in the web page by javascript:
 
 ## Prepare Chrome startup script
 
-See [start-chrome-kiosk.ps1](https://github.com/scriptotek/browser-kiosk-windows-setup/blob/master/start-kiosk.ps1) for an example startup script for Chrome.
+See [start-chrome-kiosk.ps1](https://github.com/scriptotek/browser-kiosk-windows-setup/blob/masterstart-chrome-kiosk.ps1) for an example startup script for Chrome.
 
 The most important flag is the `--kiosk` flag, but there's also some more that are useful. Unfortunately, the flags tend to change from version to version without much notice, so alway scheck with the updated list of working flags here: https://peter.sh/experiments/chromium-command-line-switches/
 
@@ -79,7 +79,7 @@ Useful flags:
 - `--disable-infobars`: Prevent the yellow information bars.
 
 There used to be a flag called `--disable-session-crashed-bubble` for [disabling the restore dialog](https://superuser.com/questions/461035/disable-google-chrome-session-restore-functionality) that is shown if Chrome did not exit cleanly. After the flag was removed, the only way to avoid the restore dialog seems to be to manually alter the Preferences file (or lock it).
-In the [start-chrome-kiosk.ps1](https://github.com/scriptotek/browser-kiosk-windows-setup/blob/master/start-kiosk.ps1) script, we are manually altering the file.
+In the [start-chrome-kiosk.ps1](https://github.com/scriptotek/browser-kiosk-windows-setup/blob/master/start-chrome-kiosk.ps1) script, we are manually altering the file.
 
 
 
