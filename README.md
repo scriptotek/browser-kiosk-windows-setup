@@ -89,4 +89,6 @@ Todo
 
 ## Hiding the mouse cursor
 
-CSS can in principle be used to hide the cursor, but a small cursor move is required for this to take effect. Another strategy involves replacing the cursor graphic with a small white pixel, but this is quite a hack. The strategy we've found to work the best is to use a small app called [AutoHideMouseCursor](https://www.softwareok.com/?seite=Microsoft/AutoHideMouseCursor). It can be configured to start in the tray and automatically hide the cursor after a given time, say 5 seconds. And it always just works.
+On Windows 7, the cursor starts out visible in the middle of the screen upon boot, so we used to use [AutoHideMouseCursor](https://www.softwareok.com/?seite=Microsoft/AutoHideMouseCursor) to hide it after a short delay, say 5 seocnds.
+
+On Windows 10, the cursor starts out hidden upon boot, and does not become visible before it's moved. This is perfect for kiosk screens.
