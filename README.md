@@ -36,9 +36,10 @@ To schedule this, do the following:
 3.	Give it a name (like `Automatic restart every night`) and click Next.
 4.	When asked `When do you want the task to start?`, select Daily. Click Next.
 5.	Select some time in the night, like `05:00:00`
-6.	Clicking Next will bring you to the Action page. Enter the path to your copy of the 
-   [restart-computer.ps1](https://github.com/scriptotek/browser-kiosk-windows-setup/blob/master/restart-computer.ps1)
-   script in the Program/script field. The script will try to gracefully close programs before rebooting.
+6.	Clicking Next will bring you to the Action page. Enter "powershell.exe" under "Program/script",
+    and the path to your copy of the [restart-computer.ps1](https://github.com/scriptotek/browser-kiosk-windows-setup/blob/master/restart-computer.ps1) under "Add arguments (optional)". If it's not working, see
+    [this guide](https://community.spiceworks.com/how_to/17736-run-powershell-scripts-from-task-scheduler)
+    for info about setting execution policy.
 7.	Click Next to review all and finally click Finish.
 
 ## Prevent the screen from going black or enter screen saver
